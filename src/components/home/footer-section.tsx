@@ -12,7 +12,7 @@ export default function FooterSection() {
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="text-muted-foreground text-sm order-2 sm:order-1">
-            © {currentYear} Your Name. All rights reserved.
+            © {currentYear} Akkal Dhami. All rights reserved.
           </div>
 
           <div className="flex gap-3 order-1 sm:order-2">
