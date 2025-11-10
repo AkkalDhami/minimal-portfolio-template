@@ -39,7 +39,7 @@ export default function CoolHeroSection() {
     "GraphQL,",
     "REST API,",
     "MongoDB,",
-    "MySQL,",
+    "MySQL. ",
   ];
 
   return (
