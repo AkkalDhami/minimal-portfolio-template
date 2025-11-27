@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Fira_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { AppleStyleDock } from "@/components/home/dock-navbar";
+import { Navbar } from "@/components/home/dock-navbar";
 import { Toaster } from "@/components/ui/sonner";
 
 const firaCode = Fira_Mono({
@@ -30,7 +30,7 @@ export default function RootLayout({
           disableTransitionOnChange>
           <main className="max-w-5xl px-4 min-h-screen mx-auto">
             {children}
-            <AppleStyleDock />
+            <Navbar />
           </main>
 
           <Toaster position="top-center" />

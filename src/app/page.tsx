@@ -1,5 +1,5 @@
 import ContactSection from "@/components/home/contact-section";
-import ExperienceSection from "@/components/home/experience-section";
+import WorkEduSection from "@/components/home/work-edu-section";
 import CoolHeroSection from "@/components/home/hero-section";
 import ProjectsSection from "@/components/home/project-section";
 import SkillsSection from "@/components/home/skill-section";
@@ -12,7 +12,7 @@ function page() {
       <CoolHeroSection />
       <ProjectsSection />
       <SkillsSection />
-      <ExperienceSection />
+      <WorkEduSection />
       <TestimonialSection />
       <ContactSection />
       <FooterSection />
