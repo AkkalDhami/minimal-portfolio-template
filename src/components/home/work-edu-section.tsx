@@ -13,6 +13,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { HeaderBadge } from "../ui/header-badge";
 import TechBadge from "./tech-badge";
+import { HiArrowLongRight } from "react-icons/hi2";
 import {
   FaAws,
   FaCss3Alt,
@@ -178,11 +179,9 @@ const experiences = [
   },
 ];
 
-
-
-export default function ExperienceSection() {
+export default function WorkEduSection() {
   return (
-    <section id="experiences" className="bg-background px-4 py-16 mb-12">
+    <section id="education" className="bg-background px-4 py-16 mb-12">
       <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
         <motion.div
@@ -224,7 +223,7 @@ export default function ExperienceSection() {
 
           {/* Experience Items */}
           <div className="space-y-12 w-full">
-            {experiences.map((experience, index) => (
+            {experiences.map((experience) => (
               <motion.div
                 key={experience.id}
                 variants={fadeInUp}
@@ -235,6 +234,7 @@ export default function ExperienceSection() {
                     className={`w-4 h-4 rounded-full bg-accent border-2 border-neutral-500/30 shadow-lg`}
                   />
                 </div>
+                <HiArrowLongRight className="absolute left-9 text-neutral-500/90 text-3xl transform -translate-x-1/2 z-10" />
 
                 <div className={`ml-12 w-full`}>
                   <Card className="bg-transparent dark:bg-transparent border  transition-all duration-300 hover:border-neutral-300 dark:hover:border-neutral-600">

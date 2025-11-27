@@ -3,6 +3,11 @@
 import { motion } from "motion/react";
 import { Heart } from "lucide-react";
 import SocialLinks from "./socials";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function FooterSection() {
   const currentYear = new Date().getFullYear();
@@ -34,13 +39,20 @@ export default function FooterSection() {
             </motion.div>
             <span>by Akkal Dhami</span>
           </div>
-          <motion.button
-            whileHover={{ y: -2 }}
-            whileTap={{ y: 0 }}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-muted-foreground cursor-pointer hover:text-accent-foreground transition-colors text-sm">
-            Back to top ↑
-          </motion.button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <motion.button
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="p-1 px-2.5 text-sm text-center transition-colors border rounded-sm cursor-pointer hover:border-zinc-500/80 text-muted-foreground hover:text-accent-foreground">
+                ↑
+              </motion.button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Scroll to top</p>
+            </TooltipContent>
+          </Tooltip>
         </div>
       </div>
     </footer>

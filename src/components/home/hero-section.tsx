@@ -30,20 +30,22 @@ export default function CoolHeroSection() {
   ];
 
   const techStack = [
-    "React.js,",
-    "Next.js,",
-    "TypeScript,",
-    "JavaScript,",
-    "Node.js,",
-    "Express.js,",
-    "GraphQL,",
-    "REST API,",
-    "MongoDB,",
-    "MySQL. ",
+    "React.js",
+    "Next.js",
+    "TypeScript",
+    "JavaScript",
+    "Node.js",
+    "Express.js",
+    "GraphQL",
+    "REST API",
+    "MongoDB",
+    "MySQL",
   ];
 
   return (
-    <section className="min-h-[90vh] relative flex items-center justify-center overflow-hidden bg-background px-4 mb-8">
+    <section
+      id="about"
+      className="min-h-[90vh] relative flex items-center justify-center overflow-hidden bg-background px-4 mb-8">
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
@@ -75,7 +77,7 @@ export default function CoolHeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className="text-3xl sm:text-5xl font-bold mb-5">
-            It's me Akkal Dhami
+            It&apos;s me Akkal Dhami
           </motion.h1>
           <HeaderBadge
             icon={<Sparkles className="size-3" />}
@@ -98,14 +100,14 @@ export default function CoolHeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-xl text-muted-foreground mb-8 max-w-2xl leading-relaxed">
+              className="text-xl text-muted-foreground mb-8 max-w-2xl leading-relaxed w-full">
               I create modern, responsive web applications with
               {techStack.map((tech, i) => (
                 <strong
                   key={i}
-                  className="hover:text-accent-foreground duration-200">
-                  {" "}
+                  className="text-accent-foreground rounded-sm border ml-3 bg-neutral-100 dark:bg-neutral-900 px-2 py-1.5 duration-200">
                   {tech}
+                  {i === techStack.length - 1 ? "." : ","}
                 </strong>
               ))}
               Clean code, smooth experiences, and modern design are at the heart
@@ -121,7 +123,7 @@ export default function CoolHeroSection() {
                 size="lg"
                 variant={"outline"}
                 asChild
-                className="group border border-zinc-500/30  cursor-pointer relative bg-transparent dark:bg-transparent">
+                className="group hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-zinc-500/30  cursor-pointer relative bg-transparent dark:bg-transparent">
                 <Link href={"#projects"}>
                   View My Work
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -143,24 +145,6 @@ export default function CoolHeroSection() {
             <SocialLinks />
           </motion.div>
         </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-neutral-500 rounded-full flex justify-center">
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1 h-3 bg-neutral-500 rounded-full mt-2"
-            />
-          </motion.div>
-        </motion.div>
       </div>
     </section>
   );

@@ -28,12 +28,10 @@ export interface Project {
   title: string;
   description: string;
   technologies: Technology[];
-  image: string;
+  images: string[];
   liveUrl: string;
   githubUrl: string;
-  createdAt: string;
   features: string[];
-  gallery: string[];
   category: string;
 }
 
@@ -51,10 +49,16 @@ const mockProjects: Project[] = [
       { name: "MongoDB", icon: SiMongodb },
       { name: "TailwindCSS", icon: SiTailwindcss },
     ],
-    image: "",
+    images: [
+      "/elon.jpg",
+      "/sundar.avif",
+      "/elon.jpg",
+      "/sundar.avif",
+      "/elon.jpg",
+      "/sundar.avif",
+    ],
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/example/project",
-    createdAt: "2024-01-15",
     features: [
       "Real-time analytics",
       "Inventory management",
@@ -62,7 +66,6 @@ const mockProjects: Project[] = [
       "Customer insights",
     ],
     category: "Full Stack",
-    gallery: [],
   },
   {
     id: 2,
@@ -76,10 +79,16 @@ const mockProjects: Project[] = [
       { name: "MongoDB", icon: SiMongodb },
       { name: "CSS3", icon: FaCss3Alt },
     ],
-    image: "",
+    images: [
+      "/elon.jpg",
+      "/sundar.avif",
+      "/elon.jpg",
+      "/sundar.avif",
+      "/elon.jpg",
+      "/sundar.avif",
+    ],
     liveUrl: "",
     githubUrl: "https://github.com/example/banking-app",
-    createdAt: "2024-02-20",
     features: [
       "Biometric authentication",
       "Real-time transactions",
@@ -87,7 +96,6 @@ const mockProjects: Project[] = [
       "Secure encryption",
     ],
     category: "Mobile App",
-    gallery: [],
   },
   {
     id: 3,
@@ -101,10 +109,16 @@ const mockProjects: Project[] = [
       { name: "JavaScript", icon: FaJs },
       { name: "TailwindCSS", icon: SiTailwindcss },
     ],
-    image: "",
+    images: [
+      "/elon.jpg",
+      "/sundar.avif",
+      "/elon.jpg",
+      "/sundar.avif",
+      "/elon.jpg",
+      "/sundar.avif",
+    ],
     liveUrl: "https://ai-content.example.com",
     githubUrl: "https://github.com/example/ai-content",
-    createdAt: "2024-03-10",
     features: [
       "AI-powered generation",
       "Multiple content types",
@@ -112,7 +126,6 @@ const mockProjects: Project[] = [
       "Content scheduling",
     ],
     category: "AI/ML",
-    gallery: [],
   },
   {
     id: 4,
@@ -126,10 +139,16 @@ const mockProjects: Project[] = [
       { name: "JavaScript", icon: FaJs },
       { name: "TailwindCSS", icon: SiTailwindcss },
     ],
-    image: "",
+    images: [
+      "/elon.jpg",
+      "/sundar.avif",
+      "/elon.jpg",
+      "/sundar.avif",
+      "/elon.jpg",
+      "/sundar.avif",
+    ],
     liveUrl: "https://tasks.example.com",
     githubUrl: "https://github.com/example/task-manager",
-    createdAt: "2024-02-05",
     features: [
       "Real-time updates",
       "Team collaboration",
@@ -137,7 +156,6 @@ const mockProjects: Project[] = [
       "Task scheduling",
     ],
     category: "Productivity",
-    gallery: [],
   },
   {
     id: 5,
@@ -151,10 +169,16 @@ const mockProjects: Project[] = [
       { name: "HTML5", icon: FaHtml5 },
       { name: "TailwindCSS", icon: SiTailwindcss },
     ],
-    image: "",
+    images: [
+      "/elon.jpg",
+      "/sundar.avif",
+      "/elon.jpg",
+      "/sundar.avif",
+      "/elon.jpg",
+      "/sundar.avif",
+    ],
     liveUrl: "",
     githubUrl: "https://github.com/example/weather-app",
-    createdAt: "2024-01-28",
     features: [
       "Real-time weather",
       "Interactive maps",
@@ -162,7 +186,6 @@ const mockProjects: Project[] = [
       "Detailed forecasts",
     ],
     category: "Web App",
-    gallery: [],
   },
 ];
 
@@ -187,23 +210,25 @@ export const formatDate = (dateString: string) => {
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="bg-background px-4 py-16 mb-12">
-      <div className="container mx-auto max-w-6xl">
+    <section
+      id="projects"
+      className="min-h-screen py-16 mb-12 bg-background sm:px-4">
+      <div className="container max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16">
+          className="mb-16 text-center">
           <HeaderBadge
             icon={<Sparkles className="size-4" />}
             text="My Projects"
           />
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             Featured Projects
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
             A collection of projects that showcase my skills in modern web
             development and problem-solving capabilities.
           </p>
@@ -228,14 +253,14 @@ export default function ProjectsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-center mt-12">
+          className="mt-12 text-center">
           <Button
             variant="outline"
             asChild
             size="lg"
             className="relative dark:bg-transparent">
             <Link href={"https://github.com/akkaldhami"} target="_blank">
-              <SiGithub className="mr-2 h-4 w-4" /> Explore My GitHub Profile
+              <SiGithub className="w-4 h-4 mr-2" /> Explore My GitHub Profile
               <BorderBeam
                 size={40}
                 initialOffset={20}
