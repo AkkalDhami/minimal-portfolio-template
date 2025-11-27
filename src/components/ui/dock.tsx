@@ -19,6 +19,7 @@ export interface MenuDockProps {
   orientation?: "horizontal" | "vertical";
   showLabels?: boolean;
   animated?: boolean;
+  activeIndex?: number;
 }
 
 const defaultItems: MenuDockItem[] = [
@@ -36,6 +37,7 @@ export const MenuDock: React.FC<MenuDockProps> = ({
   orientation = "horizontal",
   showLabels = true,
   animated = true,
+  activeIndex = 0,
 }) => {
   const finalItems = useMemo(() => {
     const isValid =
@@ -50,56 +52,98 @@ export const MenuDock: React.FC<MenuDockProps> = ({
     return items;
   }, [items]);
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [internalActiveIndex, setInternalActiveIndex] = useState(activeIndex);
   const [underlineWidth, setUnderlineWidth] = useState(0);
   const [underlineLeft, setUnderlineLeft] = useState(0);
 
   const textRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const containerRef = useRef<HTMLElement | null>(null);
 
+  // Sync internal state with external activeIndex
   useEffect(() => {
-    if (activeIndex >= finalItems.length) {
-      setActiveIndex(0);
-    }
-  }, [finalItems, activeIndex]);
+    setInternalActiveIndex(activeIndex);
+  }, [activeIndex]);
 
-  useEffect(() => {
-    const updateUnderline = () => {
-      const activeButton = itemRefs.current[activeIndex];
-      const activeText = textRefs.current[activeIndex];
+  // Use internal state for display
+  const currentActiveIndex = internalActiveIndex;
 
-      if (
-        activeButton &&
-        activeText &&
-        showLabels &&
-        orientation === "horizontal"
-      ) {
-        const buttonRect = activeButton.getBoundingClientRect();
-        const textRect = activeText.getBoundingClientRect();
-        const containerRect =
-          activeButton.parentElement?.getBoundingClientRect();
-
-        if (containerRect) {
-          setUnderlineWidth(textRect.width);
-          setUnderlineLeft(
-            buttonRect.left -
-              containerRect.left +
-              (buttonRect.width - textRect.width) / 2
-          );
-        }
-      }
-    };
-
-    updateUnderline();
-    window.addEventListener("resize", updateUnderline);
-    return () => window.removeEventListener("resize", updateUnderline);
-  }, [activeIndex, finalItems, showLabels, orientation]);
-
+  // In your MenuDock component, modify the handleItemClick function:
   const handleItemClick = (index: number, item: MenuDockItem) => {
-    setActiveIndex(index);
+    // Don't update active index for theme item
+    if (item.label !== "theme") {
+      setInternalActiveIndex(index);
+    }
+
+    // Scroll to section (only for non-theme items)
+    if (item.label !== "theme") {
+      const section = document.getElementById(item.label.toLowerCase());
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    // Call custom onClick if provided
     item.onClick?.();
   };
 
+  // Underline animation update
+  useEffect(() => {
+    const updateUnderline = () => {
+      const nav = containerRef.current;
+      const activeButton = itemRefs.current[currentActiveIndex];
+      const activeText = textRefs.current[currentActiveIndex];
+
+      if (
+        !nav ||
+        !activeButton ||
+        !activeText ||
+        !showLabels ||
+        orientation !== "horizontal"
+      ) {
+        setUnderlineWidth(0);
+        setUnderlineLeft(0);
+        return;
+      }
+
+      const buttonRect = activeButton.getBoundingClientRect();
+      const textRect = activeText.getBoundingClientRect();
+      const containerRect = nav.getBoundingClientRect();
+
+      const scrollLeft = nav.scrollLeft || 0;
+      const left =
+        buttonRect.left -
+        containerRect.left +
+        scrollLeft +
+        (buttonRect.width - textRect.width) / 2;
+
+      setUnderlineWidth(Math.max(4, textRect.width));
+      setUnderlineLeft(left);
+    };
+
+    updateUnderline();
+
+    const navEl = containerRef.current;
+    window.addEventListener("resize", updateUnderline);
+    navEl?.addEventListener("scroll", updateUnderline);
+
+    const mo = new MutationObserver(updateUnderline);
+    if (navEl)
+      mo.observe(navEl, {
+        childList: false,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ["class", "style"],
+      });
+
+    return () => {
+      window.removeEventListener("resize", updateUnderline);
+      navEl?.removeEventListener("scroll", updateUnderline);
+      mo.disconnect();
+    };
+  }, [currentActiveIndex, finalItems, showLabels, orientation]);
+
+  // Variant styles
   const getVariantStyles = () => {
     switch (variant) {
       case "compact":
@@ -119,7 +163,7 @@ export const MenuDock: React.FC<MenuDockProps> = ({
       default:
         return {
           container: "p-2",
-          item: "p-2 min-w-14",
+          item: "p-2 sm:min-w-14",
           icon: "h-5 w-5",
           text: "text-sm",
         };
@@ -130,54 +174,46 @@ export const MenuDock: React.FC<MenuDockProps> = ({
 
   return (
     <nav
+      ref={containerRef}
       className={cn(
-        "relative inline-flex items-center rounded-xl bg-card border shadow-sm",
-        orientation === "horizontal" ? "flex-row" : "flex-col",
+        "fixed bg-transparent border-neutral-500/60 dark:border-neutral-500/60 bottom-3 max-w-[600px] mx-auto overflow-x-auto sm:w-full right-2 sm:left-1/2 sm:-translate-x-1/2 z-50",
+        "inline-flex items-center rounded-xl bg-background border shadow-sm space-y-1 sm:space-x-2",
+        orientation === "horizontal" ? "flex-col sm:flex-row" : "flex-col",
         styles.container,
         className
       )}
       role="navigation">
       {finalItems.map((item, index) => {
-        const isActive = index === activeIndex;
+        const isActive = item.label !== "theme" && index === currentActiveIndex;
         const IconComponent = item.icon;
 
         return (
           <button
-            key={`${item.label}-${index}`}
-            ref={(el) => {
-              itemRefs.current[index] = el;
-            }}
+            key={item.label}
+            ref={(el) => (itemRefs.current[index] = el)}
+            onClick={() => handleItemClick(index, item)}
             className={cn(
-              "relative flex cursor-pointer flex-col items-center justify-center rounded-lg transition-all duration-200 border border-transparent",
+              "relative flex group cursor-pointer flex-col items-center justify-center rounded-lg transition-all duration-200 border border-transparent",
               "hover:border-neutral-500/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
               styles.item,
-              isActive && "text-primary border-neutral-500/90",
-              !isActive && "text-muted-foreground hover:text-foreground border-transparent"
+              isActive
+                ? "text-primary border-neutral-500/90"
+                : "text-muted-foreground border-transparent hover:text-foreground"
             )}
-            onClick={() => handleItemClick(index, item)}
+            type="button"
             aria-label={item.label}
-            type="button">
-            <div
-              className={cn(
-                "flex items-center justify-center transition-all duration-200",
-                animated && isActive && "animate-bounce",
-                orientation === "horizontal" && showLabels ? "mb-1" : "",
-                orientation === "vertical" && showLabels ? "mb-1" : ""
-              )}>
-              <IconComponent
-                className={cn(styles.icon, "transition-colors duration-200")}
-              />
-            </div>
+            aria-current={isActive ? "page" : undefined}>
+            <IconComponent
+              className={cn(styles.icon, "transition-colors duration-200")}
+            />
 
             {showLabels && (
               <span
-                ref={(el) => {
-                  textRefs.current[index] = el;
-                }}
+                ref={(el) => (textRefs.current[index] = el)}
                 className={cn(
-                  "font-medium hidden sm:inline transition-colors duration-200 capitalize",
+                  "font-medium hidden sm:block transition-colors duration-200 capitalize",
                   styles.text,
-                  "whitespace-nowrap"
+                  isActive ? "text-primary font-semibold" : ""
                 )}>
                 {item.label}
               </span>
@@ -186,50 +222,16 @@ export const MenuDock: React.FC<MenuDockProps> = ({
         );
       })}
 
-      {/* Animated underline for horizontal orientation with labels */}
       {showLabels && orientation === "horizontal" && (
         <div
           className={cn(
-            "absolute bottom-2 h-0.5 bg-primary rounded-full transition-all duration-300 ease-out",
+            "absolute opacity-0 sm:opacity-100 bottom-3 h-0.5 bg-primary rounded-full transition-all duration-300 ease-out",
             animated ? "transition-all duration-300" : ""
           )}
           style={{
             width: `${underlineWidth}px`,
-            left: `${underlineLeft}px`,
-          }}
-        />
-      )}
-
-      {/* Active indicator for vertical orientation or no labels */}
-      {(!showLabels || orientation === "vertical") && (
-        <div
-          className={cn(
-            "absolute bg-primary rounded-full transition-all duration-300",
-            orientation === "vertical"
-              ? "left-1 w-1 h-6"
-              : "bottom-0.5 h-0.5 w-6"
-          )}
-          style={{
-            [orientation === "vertical" ? "top" : "left"]:
-              orientation === "vertical"
-                ? `${
-                    activeIndex *
-                      (variant === "large"
-                        ? 64
-                        : variant === "compact"
-                        ? 56
-                        : 60) +
-                    (variant === "large" ? 19 : variant === "compact" ? 16 : 18)
-                  }px`
-                : `${
-                    activeIndex *
-                      (variant === "large"
-                        ? 64
-                        : variant === "compact"
-                        ? 56
-                        : 60) +
-                    (variant === "large" ? 19 : variant === "compact" ? 16 : 18)
-                  }px`,
+            transform: `translateX(${underlineLeft}px)`,
+            left: 0,
           }}
         />
       )}
