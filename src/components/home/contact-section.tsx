@@ -73,7 +73,7 @@ export default function ContactSection() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-lg bg-transparent dark:bg-transparent border border-zinc-500/40 hover:border-zinc-400 dark:hover:border-zinc-500 group text-center">
+                className="p-4 rounded-lg bg-linear-b border border-zinc-500/40 hover:border-zinc-400 dark:hover:border-zinc-500 group text-center">
                 <div className="text-2xl mb-2 text-muted-foreground group-hover:text-accent-foreground dark:group-hover:text-accent-foreground transition-colors">
                   {social.icon}
                 </div>
