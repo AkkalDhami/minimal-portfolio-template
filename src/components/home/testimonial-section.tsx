@@ -74,8 +74,8 @@ const ReviewCard = ({ review }: { review: Testimonial }) => {
   return (
     <figure
       className={cn(
-        "relative h-full min-w-[300px] w-full cursor-pointer overflow-hidden rounded-xl border p-4",
-        "border-gray-950/10 bg-linear-r",
+        "relative h-full min-w-[300px] w-full overflow-hidden rounded-xl border p-4",
+        "border-gray-950/10 bg-linear-r"
       )}>
       <div className="flex flex-row items-center gap-2">
         <Avatar>
@@ -120,10 +120,7 @@ export function TestimonialSection() {
           </p>
         </motion.div>
         <div className="relative flex h-[500px] w-full flex-row items-center justify-center overflow-hidden">
-          <Marquee
-            pauseOnHover
-            vertical
-            className="[--duration:20s]">
+          <Marquee pauseOnHover vertical className="[--duration:20s]">
             {firstRow.map((review) => (
               <ReviewCard key={review.id} review={review} />
             ))}

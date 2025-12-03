@@ -66,17 +66,7 @@ export default function CoolHeroSection() {
         }}
       />
 
-      {/* Floating Grid */}
-      <div className="absolute inset-0 opacity-10">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `linear-linear(#ffffff 1px, transparent 1px),
-                           linear-linear(90deg, #ffffff 1px, transparent 1px)`,
-            backgroundSize: "50px 50px",
-          }}
-        />
-      </div>
+  
       <div className="container mx-auto relative z-10">
         <div className="items-center mt-4 sm:mt-0">
           <motion.h1
@@ -133,7 +123,7 @@ export default function CoolHeroSection() {
                 size="lg"
                 variant={"outline"}
                 asChild
-                className="group hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-zinc-500/30  cursor-pointer relative bg-transparent dark:bg-transparent">
+                className="group hover:shadow-primary border border-zinc-500/10  cursor-pointer relative bg-linear-t">
                 <Link href={"#projects"}>
                   View My Work
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

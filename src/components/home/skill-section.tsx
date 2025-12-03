@@ -55,6 +55,7 @@ import {
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import { HeaderBadge } from "../ui/header-badge";
+import { cn } from "@/lib/utils";
 
 const fadeInUp = {
   initial: { y: 40, opacity: 0 },
@@ -197,7 +198,10 @@ export default function SkillsSection() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.05 }}
                         viewport={{ once: true }}
-                        className="flex items-center gap-2 p-2 rounded-lg bg-transparent dark:bg-transparent border border-neutral-500/40 dark:border-neutral-500/30 hover:border-neutral-500 dark:hover:border-neutral-600 transition-colors duration-200 group/item">
+                        className={cn(
+                          "flex items-center gap-2 p-2 rounded-lg border border-neutral-500/40 dark:border-neutral-500/30 hover:border-neutral-500 dark:hover:border-neutral-600 transition-colors duration-200 group/item",
+                          index % 2 === 0 ? "bg-linear-r" : "bg-linear-b"
+                        )}>
                         <div className="p-1.5 rounded-md">
                           <skill.icon className="size-5 text-accent-foreground" />
                         </div>

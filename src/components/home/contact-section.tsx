@@ -110,7 +110,7 @@ export default function ContactSection() {
                 asChild>
                 <Link
                   href="mailto:hello@example.com"
-                  className="border border-zinc-500/30  cursor-pointer relative bg-transparent dark:bg-transparent">
+                  className="border hover:shadow-primary border-zinc-500/30  cursor-pointer relative bg-linear-b">
                   <Mail className="h-4 w-4 mr-2" />
                   Send Email
                   <BorderBeam

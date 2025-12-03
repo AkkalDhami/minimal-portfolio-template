@@ -258,7 +258,7 @@ export default function ProjectsSection() {
             variant="outline"
             asChild
             size="lg"
-            className="relative dark:bg-transparent">
+            className="relative rounded-full bg-linear-t hover:bg-transparent hover:shadow-primary">
             <Link href={"https://github.com/akkaldhami"} target="_blank">
               <SiGithub className="w-4 h-4 mr-2" /> Explore My GitHub Profile
               <BorderBeam

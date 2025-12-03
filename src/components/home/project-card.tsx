@@ -80,7 +80,7 @@ export function ProjectCard({ project }: { project: Project }) {
                 <Link
                   href={project.liveUrl}
                   target="_blank"
-                  className="flex hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] items-center w-auto gap-2 px-3 duration-300 bg-transparent border rounded-sm cursor-pointer backdrop-blur-sm border-zinc-500/30 dark:border-zinc-500/40 hover:border-zinc-400 dark:hover:border-zinc-500 dark:bg-transparent">
+                  className="flex bg-linear-l hover:shadow-primary items-center w-auto gap-2 px-3 py-1 duration-300 bg-transparent border rounded-sm cursor-pointer backdrop-blur-sm border-zinc-500/30 dark:border-zinc-500/40 hover:border-zinc-400 dark:hover:border-zinc-500">
                   <LinkIcon className="w-4 h-4" />
                   Live Demo
                 </Link>
@@ -88,7 +88,7 @@ export function ProjectCard({ project }: { project: Project }) {
               <Button
                 variant="default"
                 size="sm"
-                className="flex items-center gap-2"
+                className="flex hover:shadow-primary items-center gap-2"
                 asChild>
                 <Link href={project.githubUrl} target="_blank">
                   <SiGithub className="w-4 h-4" />

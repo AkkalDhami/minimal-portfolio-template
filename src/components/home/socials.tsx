@@ -40,7 +40,7 @@ function SocialLinks({
             variant="outline"
             size="icon"
             className={cn(
-              "rounded-sm hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-auto cursor-pointer px-2 py-1 h-7 backdrop-blur-sm border hover:border-zinc-600 dark:hover:border-zinc-500 bg-transparent dark:bg-transparent",
+              "rounded-sm hover:shadow-primary w-auto cursor-pointer px-2 py-1 h-7 backdrop-blur-sm border bg-linear-l",
               isLarge && "px-3 py-2 h-9"
             )}>
             <Link href={social.href} target="_blank">
