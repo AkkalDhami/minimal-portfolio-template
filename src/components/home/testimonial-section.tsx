@@ -75,9 +75,7 @@ const ReviewCard = ({ review }: { review: Testimonial }) => {
     <figure
       className={cn(
         "relative h-full min-w-[300px] w-full cursor-pointer overflow-hidden rounded-xl border p-4",
-        "border-gray-950/10 bg-transparent",
-
-        "dark:border-gray-50/10 dark:bg-transparent dark:hover:bg-gray-50/5"
+        "border-gray-950/10 bg-linear-r",
       )}>
       <div className="flex flex-row items-center gap-2">
         <Avatar>
