@@ -45,7 +45,14 @@ export default function CoolHeroSection() {
   return (
     <section
       id="about"
-      className="min-h-[90vh] relative flex items-center justify-center overflow-hidden bg-background px-4 mb-8">
+      className="min-h-[90vh] h-full relative flex items-center justify-center overflow-hidden bg-background px-4 mb-8">
+      <div
+        aria-hidden
+        className="absolute inset-0 isolate hidden contain-strict lg:block">
+        <div className="w-140 h-320 -translate-y-87.5 absolute left-0 top-0 -rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)]" />
+        <div className="h-320 absolute left-0 top-0 w-60 -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.06)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] [translate:5%_-50%]" />
+        <div className="h-320 -translate-y-87.5 absolute left-0 top-0 w-60 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
+      </div>
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
@@ -100,16 +107,19 @@ export default function CoolHeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-xl text-muted-foreground mb-8 max-w-2xl leading-relaxed w-full">
+              className="text-xl text-muted-foreground mb-8 max-w-xl leading-relaxed w-full">
               I create modern, responsive web applications with
-              {techStack.map((tech, i) => (
-                <strong
-                  key={i}
-                  className="text-accent-foreground rounded-sm border ml-3 bg-neutral-100 dark:bg-neutral-900 px-2 py-1.5 duration-200">
-                  {tech}
-                  {i === techStack.length - 1 ? "." : ","}
-                </strong>
-              ))}
+              {techStack.map((tech, i) =>
+                i === techStack.length - 1 ? (
+                  <span
+                    key={tech}
+                    className="text-accent-foreground">{` and ${tech}. `}</span>
+                ) : (
+                  <span
+                    key={tech}
+                    className="text-accent-foreground">{` ${tech}, `}</span>
+                )
+              )}
               Clean code, smooth experiences, and modern design are at the heart
               of what I do.
             </motion.p>
