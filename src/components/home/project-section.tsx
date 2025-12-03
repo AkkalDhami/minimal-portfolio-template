@@ -140,7 +140,7 @@ const mockProjects: Project[] = [
       { name: "TailwindCSS", icon: SiTailwindcss },
     ],
     images: [
-      "/elon.jpg",
+      "/proj-1.png",
       "/sundar.avif",
       "/elon.jpg",
       "/sundar.avif",
