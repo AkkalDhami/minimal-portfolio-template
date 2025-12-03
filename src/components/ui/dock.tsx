@@ -149,7 +149,7 @@ export const MenuDock: React.FC<MenuDockProps> = ({
       case "compact":
         return {
           container: "p-1",
-          item: "p-2 min-w-12",
+          item: "py-2 px-3 min-w-16",
           icon: "h-4 w-4",
           text: "text-xs",
         };
@@ -162,8 +162,8 @@ export const MenuDock: React.FC<MenuDockProps> = ({
         };
       default:
         return {
-          container: "p-2",
-          item: "p-2 sm:min-w-14",
+          container: "px-3 py-2",
+          item: "px-3 py-2 sm:min-w-14",
           icon: "h-5 w-5",
           text: "text-sm",
         };
@@ -176,7 +176,7 @@ export const MenuDock: React.FC<MenuDockProps> = ({
     <nav
       ref={containerRef}
       className={cn(
-        "fixed bg-transparent border-neutral-500/60 dark:border-neutral-500/60 bottom-3 max-w-[600px] mx-auto overflow-x-auto sm:w-full right-2 sm:left-1/2 sm:-translate-x-1/2 z-50",
+        "fixed bg-transparent border-neutral-500/60 dark:border-neutral-500/60 bottom-3 max-w-[700px] mx-auto overflow-x-auto sm:w-full right-2 sm:left-1/2 sm:-translate-x-1/2 z-50",
         "inline-flex items-center rounded-xl bg-background border shadow-sm space-y-1 sm:space-x-2",
         orientation === "horizontal" ? "flex-col sm:flex-row" : "flex-col",
         styles.container,
@@ -193,7 +193,7 @@ export const MenuDock: React.FC<MenuDockProps> = ({
             ref={(el) => (itemRefs.current[index] = el)}
             onClick={() => handleItemClick(index, item)}
             className={cn(
-              "relative flex group cursor-pointer flex-col items-center justify-center rounded-lg transition-all duration-200 border border-transparent",
+              "relative flex group px-3 cursor-pointer flex-col items-center justify-center rounded-lg transition-all duration-200 border border-transparent",
               "hover:border-neutral-500/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
               styles.item,
               isActive
