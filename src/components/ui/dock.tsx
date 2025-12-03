@@ -190,7 +190,9 @@ export const MenuDock: React.FC<MenuDockProps> = ({
         return (
           <button
             key={item.label}
-            ref={(el) => (itemRefs.current[index] = el)}
+            ref={(el) => {
+              itemRefs.current[index] = el;
+            }}
             onClick={() => handleItemClick(index, item)}
             className={cn(
               "relative flex group px-3 cursor-pointer flex-col items-center justify-center rounded-lg transition-all duration-200 border border-transparent",
@@ -209,7 +211,9 @@ export const MenuDock: React.FC<MenuDockProps> = ({
 
             {showLabels && (
               <span
-                ref={(el) => (textRefs.current[index] = el)}
+                ref={(el) => {
+                  textRefs.current[index] = el;
+                }}
                 className={cn(
                   "font-medium hidden sm:block transition-colors duration-200 capitalize",
                   styles.text,
