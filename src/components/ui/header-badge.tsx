@@ -10,7 +10,7 @@ interface HeaderBadgeProps {
 
 export const HeaderBadge: React.FC<HeaderBadgeProps> = ({ icon, text }) => {
   return (
-    <div className="inline-flex bg-linear-r relative group items-center space-x-2 border rounded-full shadow-primary px-4 py-2 mb-6">
+    <div className="inline-flex bg-linear-r relative group items-center space-x-2 border rounded-full shadow-tertiary px-4 py-2 mb-6">
       {icon}
       <span className="text-sm text-foreground/90">{text}</span>
 
