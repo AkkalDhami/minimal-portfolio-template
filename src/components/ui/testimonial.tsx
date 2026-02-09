@@ -7,7 +7,7 @@ export function Testimonial({
   return (
     <figure
       data-slot="testimonial"
-      className={cn("bg-linear-b flex h-full flex-col", className)}
+      className={cn("hover:bg-card-hover  flex h-full flex-col", className)}
       {...props}
     />
   );

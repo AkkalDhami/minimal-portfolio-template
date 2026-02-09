@@ -25,7 +25,7 @@ interface Testimonial {
   authorAvatar: string;
   authorName: string;
   authorTagline: string;
-  url: string;
+  url?: string;
   quote: string;
 }
 
@@ -37,7 +37,6 @@ export const testimonials: Testimonial[] = [
       "https://pbs.twimg.com/profile_images/1783856060249595904/8TfcCN0r_400x400.jpg",
     authorName: "Guillermo Rauch",
     authorTagline: "CEO @Vercel",
-    url: "https://x.com/rauchg/status/1978913158514237669",
     quote: "awesome. Love the components, especially slide-to-unlock. Great job"
   },
   {
@@ -45,7 +44,6 @@ export const testimonials: Testimonial[] = [
       "https://pbs.twimg.com/profile_images/1756766826736893952/6Gvg6jha_400x400.jpg",
     authorName: "OrcDev",
     authorTagline: "Creator of 8bitcn.com",
-    url: "https://x.com/theorcdev/status/1980378575170859446",
     quote:
       "Seriously, this is one of the best portfolio templates I've ever seen."
   },
@@ -54,7 +52,6 @@ export const testimonials: Testimonial[] = [
       "https://pbs.twimg.com/profile_images/1954573702768504833/LW-j7iTr_400x400.jpg",
     authorName: "Sahaj",
     authorTagline: "Creator of tweakcn.com",
-    url: "https://x.com/iamsahaj_xyz/status/1982814244501381239",
     quote:
       "remember seeing it on @mannupaaji's review. it's one of the best looking ones I've seen"
   },
@@ -179,33 +176,27 @@ export function TestimonialSection() {
                   <MarqueeItem
                     key={item.url}
                     className="border-edge mx-0 h-full w-xs border-r">
-                    <Link
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block h-full">
-                      <Testimonial>
-                        <TestimonialQuote>
-                          <p>{item.quote}</p>
-                        </TestimonialQuote>
+                    <Testimonial>
+                      <TestimonialQuote>
+                        <p>{item.quote}</p>
+                      </TestimonialQuote>
 
-                        <TestimonialAuthor>
-                          <TestimonialAvatar>
-                            <TestimonialAvatarImg src={item.authorAvatar} />
-                            <TestimonialAvatarRing />
-                          </TestimonialAvatar>
+                      <TestimonialAuthor>
+                        <TestimonialAvatar>
+                          <TestimonialAvatarImg src={item.authorAvatar} />
+                          <TestimonialAvatarRing />
+                        </TestimonialAvatar>
 
-                          <TestimonialAuthorName>
-                            {item.authorName}
-                            <TestimonialVerifiedBadge className="text-blue-500" />
-                          </TestimonialAuthorName>
+                        <TestimonialAuthorName>
+                          {item.authorName}
+                          <TestimonialVerifiedBadge className="text-blue-500" />
+                        </TestimonialAuthorName>
 
-                          <TestimonialAuthorTagline>
-                            {item.authorTagline}
-                          </TestimonialAuthorTagline>
-                        </TestimonialAuthor>
-                      </Testimonial>
-                    </Link>
+                        <TestimonialAuthorTagline>
+                          {item.authorTagline}
+                        </TestimonialAuthorTagline>
+                      </TestimonialAuthor>
+                    </Testimonial>
                   </MarqueeItem>
                 ))}
               </MarqueeContent>
