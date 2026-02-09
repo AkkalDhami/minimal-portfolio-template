@@ -1,0 +1,10 @@
+# Ignore artifacts:
+node_modules
+.next
+build
+dist
+.env
+**/*.mdx
+**/*.md
+
+coverage
