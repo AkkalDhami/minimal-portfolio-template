@@ -27,7 +27,7 @@ const defaultItems: MenuDockItem[] = [
   { label: "work", icon: Briefcase },
   { label: "calendar", icon: Calendar },
   { label: "security", icon: Shield },
-  { label: "settings", icon: Settings },
+  { label: "settings", icon: Settings }
 ];
 
 export const MenuDock: React.FC<MenuDockProps> = ({
@@ -36,8 +36,7 @@ export const MenuDock: React.FC<MenuDockProps> = ({
   variant = "default",
   orientation = "horizontal",
   showLabels = true,
-  animated = true,
-  activeIndex = 0,
+  activeIndex = 0
 }) => {
   const finalItems = useMemo(() => {
     const isValid =
@@ -53,8 +52,6 @@ export const MenuDock: React.FC<MenuDockProps> = ({
   }, [items]);
 
   const [internalActiveIndex, setInternalActiveIndex] = useState(activeIndex);
-  const [underlineWidth, setUnderlineWidth] = useState(0);
-  const [underlineLeft, setUnderlineLeft] = useState(0);
 
   const textRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -87,62 +84,6 @@ export const MenuDock: React.FC<MenuDockProps> = ({
     item.onClick?.();
   };
 
-  // Underline animation update
-  useEffect(() => {
-    const updateUnderline = () => {
-      const nav = containerRef.current;
-      const activeButton = itemRefs.current[currentActiveIndex];
-      const activeText = textRefs.current[currentActiveIndex];
-
-      if (
-        !nav ||
-        !activeButton ||
-        !activeText ||
-        !showLabels ||
-        orientation !== "horizontal"
-      ) {
-        setUnderlineWidth(0);
-        setUnderlineLeft(0);
-        return;
-      }
-
-      const buttonRect = activeButton.getBoundingClientRect();
-      const textRect = activeText.getBoundingClientRect();
-      const containerRect = nav.getBoundingClientRect();
-
-      const scrollLeft = nav.scrollLeft || 0;
-      const left =
-        buttonRect.left -
-        containerRect.left +
-        scrollLeft +
-        (buttonRect.width - textRect.width) / 2;
-
-      setUnderlineWidth(Math.max(4, textRect.width));
-      setUnderlineLeft(left);
-    };
-
-    updateUnderline();
-
-    const navEl = containerRef.current;
-    window.addEventListener("resize", updateUnderline);
-    navEl?.addEventListener("scroll", updateUnderline);
-
-    const mo = new MutationObserver(updateUnderline);
-    if (navEl)
-      mo.observe(navEl, {
-        childList: false,
-        subtree: true,
-        attributes: true,
-        attributeFilter: ["class", "style"],
-      });
-
-    return () => {
-      window.removeEventListener("resize", updateUnderline);
-      navEl?.removeEventListener("scroll", updateUnderline);
-      mo.disconnect();
-    };
-  }, [currentActiveIndex, finalItems, showLabels, orientation]);
-
   // Variant styles
   const getVariantStyles = () => {
     switch (variant) {
@@ -151,21 +92,21 @@ export const MenuDock: React.FC<MenuDockProps> = ({
           container: "p-1",
           item: "py-2 px-3 min-w-16",
           icon: "h-4 w-4",
-          text: "text-xs",
+          text: "text-xs"
         };
       case "large":
         return {
           container: "p-3",
           item: "p-3 min-w-16",
           icon: "h-6 w-6",
-          text: "text-base",
+          text: "text-base"
         };
       default:
         return {
           container: "px-3 py-2",
           item: "px-3 py-2 sm:min-w-14",
           icon: "h-5 w-5",
-          text: "text-sm",
+          text: "text-sm"
         };
     }
   };
@@ -176,8 +117,8 @@ export const MenuDock: React.FC<MenuDockProps> = ({
     <nav
       ref={containerRef}
       className={cn(
-        "fixed bg-transparent border-neutral-500/60 dark:border-neutral-500/60 bottom-3 max-w-[700px] mx-auto overflow-x-auto sm:w-full right-2 sm:left-1/2 sm:-translate-x-1/2 z-50",
-        "inline-flex items-center rounded-xl bg-background border shadow-sm space-y-1 sm:space-x-2",
+        "fixed right-2 bottom-3 z-50 mx-auto max-w-[700px] overflow-x-auto border-neutral-500/60 bg-transparent sm:left-1/2 sm:w-full sm:-translate-x-1/2 dark:border-neutral-500/60",
+        "bg-background inline-flex items-center space-y-1 rounded-xl border shadow-sm sm:space-x-2",
         orientation === "horizontal" ? "flex-col sm:flex-row" : "flex-col",
         styles.container,
         className
@@ -190,17 +131,17 @@ export const MenuDock: React.FC<MenuDockProps> = ({
         return (
           <button
             key={item.label}
-            ref={(el) => {
+            ref={el => {
               itemRefs.current[index] = el;
             }}
             onClick={() => handleItemClick(index, item)}
             className={cn(
-              "relative flex group px-3 cursor-pointer flex-col items-center justify-center rounded-lg transition-all duration-200 border border-transparent",
-              "hover:border-neutral-500/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+              "group relative flex cursor-pointer flex-col items-center justify-center rounded-lg border border-transparent px-3 transition-all duration-200",
+              "focus-visible:ring-ring hover:border-neutral-500/70 focus-visible:ring-2 focus-visible:outline-none",
               styles.item,
               isActive
                 ? "text-primary border-neutral-500/90"
-                : "text-muted-foreground border-transparent hover:text-foreground"
+                : "text-muted-foreground hover:text-foreground border-transparent"
             )}
             type="button"
             aria-label={item.label}
@@ -211,11 +152,11 @@ export const MenuDock: React.FC<MenuDockProps> = ({
 
             {showLabels && (
               <span
-                ref={(el) => {
+                ref={el => {
                   textRefs.current[index] = el;
                 }}
                 className={cn(
-                  "font-medium hidden sm:block transition-colors duration-200 capitalize",
+                  "hidden font-medium capitalize transition-colors duration-200 sm:block",
                   styles.text,
                   isActive ? "text-primary font-semibold" : ""
                 )}>
@@ -225,20 +166,6 @@ export const MenuDock: React.FC<MenuDockProps> = ({
           </button>
         );
       })}
-
-      {showLabels && orientation === "horizontal" && (
-        <div
-          className={cn(
-            "absolute opacity-0 sm:opacity-100 bottom-3 h-0.5 bg-primary rounded-full transition-all duration-300 ease-out",
-            animated ? "transition-all duration-300" : ""
-          )}
-          style={{
-            width: `${underlineWidth}px`,
-            transform: `translateX(${underlineLeft}px)`,
-            left: 0,
-          }}
-        />
-      )}
     </nav>
   );
 };

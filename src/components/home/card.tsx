@@ -75,7 +75,7 @@ const DetailSwapCard = React.forwardRef<HTMLDivElement, DetailSwapCardProps>(
     return (
       <div
         ref={ref}
-        className={cn("w-full space-y-2 rounded-md p-4 max-w-96", className)}
+        className={cn("w-full space-y-2 rounded-md p-4", className)}
         {...rest}>
         {/* Main image display */}
         <div

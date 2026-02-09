@@ -8,7 +8,7 @@ import {
   FaPython,
   FaHtml5,
   FaCss3Alt,
-  FaJs,
+  FaJs
 } from "react-icons/fa";
 import { SiGithub, SiMongodb, SiTailwindcss } from "react-icons/si";
 import { ProjectCard } from "./project-card";
@@ -16,11 +16,12 @@ import { HeaderBadge } from "../ui/header-badge";
 import { Sparkles } from "lucide-react";
 import { BorderBeam } from "../ui/border-beam";
 import Link from "next/link";
+import { IconType } from "react-icons/lib";
 
 // Define types for the project data
 export interface Technology {
   name: string;
-  icon: any;
+  icon: IconType;
 }
 
 export interface Project {
@@ -47,25 +48,27 @@ const mockProjects: Project[] = [
       { name: "Node.js", icon: FaNodeJs },
       { name: "Python", icon: FaPython },
       { name: "MongoDB", icon: SiMongodb },
-      { name: "TailwindCSS", icon: SiTailwindcss },
+      { name: "TailwindCSS", icon: SiTailwindcss }
     ],
     images: [
-      "/elon.jpg",
-      "/sundar.avif",
-      "/elon.jpg",
-      "/sundar.avif",
-      "/elon.jpg",
-      "/sundar.avif",
+      "/proj-1.png",
+      "/proj-2.png",
+      "/proj-3.png",
+      "/og.png",
+      "/proj-1.png",
+      "/proj-2.png",
+      "/proj-3.png",
+      "/og.png"
     ],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/example/project",
+    liveUrl: "https://github.com/AkkalDhami/minimal-portfolio-template",
+    githubUrl: "https://github.com/AkkalDhami/minimal-portfolio-template",
     features: [
       "Real-time analytics",
       "Inventory management",
       "Sales tracking",
-      "Customer insights",
+      "Customer insights"
     ],
-    category: "Full Stack",
+    category: "Full Stack"
   },
   {
     id: 2,
@@ -77,25 +80,27 @@ const mockProjects: Project[] = [
       { name: "Node.js", icon: FaNodeJs },
       { name: "JavaScript", icon: FaJs },
       { name: "MongoDB", icon: SiMongodb },
-      { name: "CSS3", icon: FaCss3Alt },
+      { name: "CSS3", icon: FaCss3Alt }
     ],
     images: [
-      "/elon.jpg",
-      "/sundar.avif",
-      "/elon.jpg",
-      "/sundar.avif",
-      "/elon.jpg",
-      "/sundar.avif",
+      "/proj-1.png",
+      "/proj-2.png",
+      "/proj-3.png",
+      "/og.png",
+      "/proj-1.png",
+      "/proj-2.png",
+      "/proj-3.png",
+      "/og.png"
     ],
-    liveUrl: "",
-    githubUrl: "https://github.com/example/banking-app",
+    liveUrl: "https://github.com/AkkalDhami/minimal-portfolio-template",
+    githubUrl: "https://github.com/AkkalDhami/minimal-portfolio-template",
     features: [
       "Biometric authentication",
       "Real-time transactions",
       "Budget tracking",
-      "Secure encryption",
+      "Secure encryption"
     ],
-    category: "Mobile App",
+    category: "Mobile App"
   },
   {
     id: 3,
@@ -107,25 +112,27 @@ const mockProjects: Project[] = [
       { name: "React", icon: FaReact },
       { name: "Node.js", icon: FaNodeJs },
       { name: "JavaScript", icon: FaJs },
-      { name: "TailwindCSS", icon: SiTailwindcss },
+      { name: "TailwindCSS", icon: SiTailwindcss }
     ],
     images: [
-      "/elon.jpg",
-      "/sundar.avif",
-      "/elon.jpg",
-      "/sundar.avif",
-      "/elon.jpg",
-      "/sundar.avif",
+      "/proj-1.png",
+      "/proj-2.png",
+      "/proj-3.png",
+      "/og.png",
+      "/proj-1.png",
+      "/proj-2.png",
+      "/proj-3.png",
+      "/og.png"
     ],
-    liveUrl: "https://ai-content.example.com",
-    githubUrl: "https://github.com/example/ai-content",
+    liveUrl: "https://github.com/AkkalDhami/minimal-portfolio-template",
+    githubUrl: "https://github.com/AkkalDhami/minimal-portfolio-template",
     features: [
       "AI-powered generation",
       "Multiple content types",
       "SEO optimization",
-      "Content scheduling",
+      "Content scheduling"
     ],
-    category: "AI/ML",
+    category: "AI/ML"
   },
   {
     id: 4,
@@ -137,25 +144,27 @@ const mockProjects: Project[] = [
       { name: "Node.js", icon: FaNodeJs },
       { name: "MongoDB", icon: SiMongodb },
       { name: "JavaScript", icon: FaJs },
-      { name: "TailwindCSS", icon: SiTailwindcss },
+      { name: "TailwindCSS", icon: SiTailwindcss }
     ],
     images: [
       "/proj-1.png",
-      "/sundar.avif",
-      "/elon.jpg",
-      "/sundar.avif",
-      "/elon.jpg",
-      "/sundar.avif",
+      "/proj-2.png",
+      "/proj-3.png",
+      "/og.png",
+      "/proj-1.png",
+      "/proj-2.png",
+      "/proj-3.png",
+      "/og.png"
     ],
-    liveUrl: "https://tasks.example.com",
-    githubUrl: "https://github.com/example/task-manager",
+    liveUrl: "https://github.com/AkkalDhami/minimal-portfolio-template",
+    githubUrl: "https://github.com/AkkalDhami/minimal-portfolio-template",
     features: [
       "Real-time updates",
       "Team collaboration",
       "Project management",
-      "Task scheduling",
+      "Task scheduling"
     ],
-    category: "Productivity",
+    category: "Productivity"
   },
   {
     id: 5,
@@ -167,44 +176,46 @@ const mockProjects: Project[] = [
       { name: "JavaScript", icon: FaJs },
       { name: "CSS3", icon: FaCss3Alt },
       { name: "HTML5", icon: FaHtml5 },
-      { name: "TailwindCSS", icon: SiTailwindcss },
+      { name: "TailwindCSS", icon: SiTailwindcss }
     ],
     images: [
-      "/elon.jpg",
-      "/sundar.avif",
-      "/elon.jpg",
-      "/sundar.avif",
-      "/elon.jpg",
-      "/sundar.avif",
+      "/proj-1.png",
+      "/proj-2.png",
+      "/proj-3.png",
+      "/og.png",
+      "/proj-1.png",
+      "/proj-2.png",
+      "/proj-3.png",
+      "/og.png"
     ],
-    liveUrl: "",
-    githubUrl: "https://github.com/example/weather-app",
+    liveUrl: "https://github.com/AkkalDhami/minimal-portfolio-template",
+    githubUrl: "https://github.com/AkkalDhami/minimal-portfolio-template",
     features: [
       "Real-time weather",
       "Interactive maps",
       "Location alerts",
-      "Detailed forecasts",
+      "Detailed forecasts"
     ],
-    category: "Web App",
-  },
+    category: "Web App"
+  }
 ];
 
 const fadeInUp = {
   initial: { y: 40, opacity: 0 },
-  animate: { y: 0, opacity: 1 },
+  animate: { y: 0, opacity: 1 }
 };
 
 const stagger = {
   animate: {
     transition: {
-      staggerChildren: 0.15,
-    },
-  },
+      staggerChildren: 0.15
+    }
+  }
 };
 export const formatDate = (dateString: string) => {
   return new Date(dateString).toLocaleDateString("en-US", {
     year: "numeric",
-    month: "short",
+    month: "short"
   });
 };
 
@@ -212,8 +223,8 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="min-h-screen py-16 mb-12 bg-background sm:px-4">
-      <div className="container max-w-6xl mx-auto">
+      className="bg-background mb-12 min-h-screen py-16 sm:px-4">
+      <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -228,7 +239,7 @@ export default function ProjectsSection() {
           <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             Featured Projects
           </h2>
-          <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
+          <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
             A collection of projects that showcase my skills in modern web
             development and problem-solving capabilities.
           </p>
@@ -240,8 +251,8 @@ export default function ProjectsSection() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="grid gap-8">
-          {mockProjects.map((project) => (
+          className="grid grid-cols-1 gap-8">
+          {mockProjects.map(project => (
             <motion.div key={project.id} variants={fadeInUp} className="group">
               <ProjectCard project={project} />
             </motion.div>
@@ -258,17 +269,17 @@ export default function ProjectsSection() {
             variant="outline"
             asChild
             size="lg"
-            className="relative rounded-full bg-linear-t hover:bg-transparent hover:shadow-primary">
+            className="bg-linear-t hover:shadow-primary relative rounded-full hover:bg-transparent">
             <Link href={"https://github.com/akkaldhami"} target="_blank">
-              <SiGithub className="w-4 h-4 mr-2" /> Explore My GitHub Profile
+              <SiGithub className="mr-2 h-4 w-4" /> Explore My GitHub Profile
               <BorderBeam
                 size={40}
                 initialOffset={20}
-                className="from-transparent via-zinc-900 dark:via-zinc-50 to-transparent"
+                className="from-transparent via-zinc-900 to-transparent dark:via-zinc-50"
                 transition={{
                   type: "spring",
                   stiffness: 60,
-                  damping: 20,
+                  damping: 20
                 }}
               />
             </Link>

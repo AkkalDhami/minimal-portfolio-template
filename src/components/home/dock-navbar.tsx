@@ -22,7 +22,7 @@ export function Navbar() {
         onClick: () =>
           document
             .getElementById("about")
-            ?.scrollIntoView({ behavior: "smooth" }),
+            ?.scrollIntoView({ behavior: "smooth" })
       },
       {
         label: "projects",
@@ -30,7 +30,7 @@ export function Navbar() {
         onClick: () =>
           document
             .getElementById("projects")
-            ?.scrollIntoView({ behavior: "smooth" }),
+            ?.scrollIntoView({ behavior: "smooth" })
       },
       {
         label: "skills",
@@ -38,7 +38,7 @@ export function Navbar() {
         onClick: () =>
           document
             .getElementById("skills")
-            ?.scrollIntoView({ behavior: "smooth" }),
+            ?.scrollIntoView({ behavior: "smooth" })
       },
       {
         label: "education",
@@ -46,7 +46,7 @@ export function Navbar() {
         onClick: () =>
           document
             .getElementById("education")
-            ?.scrollIntoView({ behavior: "smooth" }),
+            ?.scrollIntoView({ behavior: "smooth" })
       },
       {
         label: "testimonials",
@@ -54,7 +54,7 @@ export function Navbar() {
         onClick: () =>
           document
             .getElementById("testimonials")
-            ?.scrollIntoView({ behavior: "smooth" }),
+            ?.scrollIntoView({ behavior: "smooth" })
       },
       {
         label: "contact",
@@ -62,18 +62,19 @@ export function Navbar() {
         onClick: () =>
           document
             .getElementById("contact")
-            ?.scrollIntoView({ behavior: "smooth" }),
+            ?.scrollIntoView({ behavior: "smooth" })
       },
       {
         label: "theme",
         icon: currentTheme === "dark" ? Sun : Moon,
-        onClick: () => setTheme(currentTheme === "dark" ? "light" : "dark"),
-      },
+        onClick: () => setTheme(currentTheme === "dark" ? "light" : "dark")
+      }
     ];
   }, [currentTheme, setTheme]);
 
   // ✅ Alternative: Scroll-based section detection
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
 
     const sectionIds = [
@@ -82,7 +83,7 @@ export function Navbar() {
       "skills",
       "education",
       "testimonials",
-      "contact",
+      "contact"
     ];
 
     const sectionToIndexMap: Record<string, number> = {};
@@ -98,7 +99,7 @@ export function Navbar() {
       let activeSection = "";
       let minDistance = Infinity;
 
-      sectionIds.forEach((id) => {
+      sectionIds.forEach(id => {
         const element = document.getElementById(id);
         if (element) {
           const rect = element.getBoundingClientRect();
@@ -151,7 +152,7 @@ export function Navbar() {
 
   return (
     <>
-      <div className="fixed z-50 w-full -translate-x-1/2 rounded-lg bottom-2 bg-background left-1/2">
+      <div className="bg-background fixed bottom-2 left-1/2 z-50 w-full -translate-x-1/2 rounded-lg">
         <MenuDock
           items={customMenuItems}
           variant="default"
@@ -159,7 +160,7 @@ export function Navbar() {
           activeIndex={activeIndex}
         />
 
-        <div className="fixed -bottom-1 inset-x-0 h-16 w-full bg-background to-transparent backdrop-blur-lg [-webkit-mask-image:linear-gradient(to_top,black,transparent)] dark:bg-background"></div>
+        {/* <div className="bg-background dark:bg-background fixed inset-x-0 -bottom-1 h-16 w-full to-transparent backdrop-blur-lg [-webkit-mask-image:linear-gradient(to_top,black,transparent)]"></div> */}
       </div>
     </>
   );
