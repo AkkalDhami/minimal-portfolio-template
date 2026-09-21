@@ -219,16 +219,16 @@
   }
 
   .bg-linear-l {
-    @apply bg-linear-to-r from-5% from-background to-card;
+    @apply from-background to-card bg-linear-to-r from-5%;
   }
   .bg-linear-r {
-    @apply bg-linear-to-l from-5% from-background to-card;
+    @apply from-background to-card bg-linear-to-l from-5%;
   }
   .bg-linear-b {
-    @apply bg-linear-to-b from-background to-card;
+    @apply from-background to-card bg-linear-to-b;
   }
   .bg-linear-t {
-    @apply bg-linear-to-t from-background to-card;
+    @apply from-background to-card bg-linear-to-t;
   }
 }
 

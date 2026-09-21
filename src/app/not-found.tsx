@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Particles } from "@/components/ui/particles";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 interface NotFoundProps {
   particleCount?: number;
@@ -27,7 +28,7 @@ export default function NotFound({
   buttonText = "Back to Home",
   buttonHref = "/",
   className = "",
-  onButtonClick,
+  onButtonClick
 }: NotFoundProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
@@ -44,7 +45,7 @@ export default function NotFound({
     const mutationObserver = new MutationObserver(observer);
     mutationObserver.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ["class"],
+      attributeFilter: ["class"]
     });
 
     return () => mutationObserver.disconnect();
@@ -76,7 +77,10 @@ export default function NotFound({
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative h-[24rem] md:h-screen w-full flex items-center justify-center overflow-hidden bg-white dark:bg-black ${className}`}
+      className={cn(
+        `relative flex h-96 w-full items-center justify-center overflow-hidden bg-white md:h-screen dark:bg-black`,
+        className
+      )}
       style={{ perspective: "1000px" }}>
       <Particles
         color={isDark ? "#ffffff" : "#000000"}
@@ -88,7 +92,7 @@ export default function NotFound({
 
       <div
         ref={imageRef}
-        className="absolute inset-0 w-full h-full transition-transform duration-300 ease-out will-change-transform pointer-events-none z-10">
+        className="pointer-events-none absolute inset-0 z-10 h-full w-full transition-transform duration-300 ease-out will-change-transform">
         <Image
           src={imageLight}
           alt="404 Light"
@@ -100,7 +104,7 @@ export default function NotFound({
           src={imageDark}
           alt="404 Dark"
           fill
-          className="object-contain hidden dark:block"
+          className="hidden object-contain dark:block"
           priority
         />
       </div>
@@ -110,7 +114,7 @@ export default function NotFound({
         particleCount={particleCount}
         particleSize={particleSize}
         animate={animate}
-        className="absolute inset-0 z-20 pointer-events-none"
+        className="pointer-events-none absolute inset-0 z-20"
       />
 
       <div className="relative z-30 mt-16 md:mt-0">
