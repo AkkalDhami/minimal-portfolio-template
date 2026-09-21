@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function SkillCard() {
-  return (
-    <div>SkillCard</div>
-  )
+  return <div>SkillCard</div>;
 }
 
-export default SkillCard
+export default SkillCard;

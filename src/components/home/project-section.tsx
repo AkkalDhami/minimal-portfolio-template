@@ -12,9 +12,9 @@ import {
 } from "react-icons/fa";
 import { SiGithub, SiMongodb, SiTailwindcss } from "react-icons/si";
 import { ProjectCard } from "./project-card";
-import { HeaderBadge } from "../ui/header-badge";
+import { HeaderBadge } from "@/components/ui/header-badge";
 import { Sparkles } from "lucide-react";
-import { BorderBeam } from "../ui/border-beam";
+import { BorderBeam } from "@/components/ui/border-beam";
 import Link from "next/link";
 import { IconType } from "react-icons/lib";
 
@@ -236,7 +236,7 @@ export default function ProjectsSection() {
             icon={<Sparkles className="size-4" />}
             text="My Projects"
           />
-          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+          <h2 className="mb-4 text-3xl font-medium md:text-4xl">
             Featured Projects
           </h2>
           <p className="text-muted-foreground mx-auto max-w-2xl text-lg">

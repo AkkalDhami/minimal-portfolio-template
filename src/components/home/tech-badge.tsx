@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge } from "../ui/badge";
+import { Badge } from "@/components/ui/badge";
 
 interface Tech {
   name: string;
@@ -10,8 +10,8 @@ function TechBadge({ tech }: { tech: Tech }) {
   return (
     <Badge
       variant={"outline"}
-      className="flex bg-linear-l items-center border border-zinc-200 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-500 gap-1.5 duration-200 font-normal px-3 py-1.5">
-      {tech.icon && <tech.icon className="w-3 h-3" />}
+      className="bg-linear-l flex items-center gap-1.5 border border-zinc-200 px-3 py-1.5 font-normal duration-200 hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500">
+      {tech.icon && <tech.icon className="h-3 w-3" />}
       {tech.name}
     </Badge>
   );

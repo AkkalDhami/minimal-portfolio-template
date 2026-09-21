@@ -5,15 +5,15 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from "@/components/ui/dialog";
-import { InteractiveHoverButton } from "../ui/interactive-hover-button";
-import { Button } from "../ui/button";
-import { Textarea } from "../ui/textarea";
-import { Input } from "../ui/input";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Send } from "lucide-react";
-import { Label } from "../ui/label";
+import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 
 interface FormData {
@@ -27,7 +27,7 @@ function ContactDialog() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
-    message: "",
+    message: ""
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -54,9 +54,9 @@ function ContactDialog() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
+    setFormData(prev => ({
       ...prev,
-      [name]: value,
+      [name]: value
     }));
   };
   return (
@@ -67,7 +67,7 @@ function ContactDialog() {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Get in Touch</DialogTitle>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             Ready to start your project?
           </p>
         </DialogHeader>
@@ -110,7 +110,7 @@ function ContactDialog() {
           </div>
 
           <Button type="submit" className="w-full cursor-pointer">
-            <Send className="h-4 w-4 mr-2" />
+            <Send className="mr-2 h-4 w-4" />
             Send Message
           </Button>
         </form>

@@ -1,13 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Heart } from "lucide-react";
-import SocialLinks from "./socials";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger
-} from "@/components/ui/tooltip";
+import { Axe, Heart } from "lucide-react";
+import Link from "next/link";
 
 export default function FooterSection() {
   const currentYear = new Date().getFullYear();
@@ -22,19 +17,21 @@ export default function FooterSection() {
 
           <div className="text-muted-foreground order-3 flex items-center gap-2 text-sm">
             <span>Made with</span>
-            <motion.div
-              animate={{
-                scale: [1, 1.3, 1, 1.3, 1]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                repeatType: "reverse"
-              }}>
-              <Heart className="text-accent-foreground h-3 w-3 fill-current" />
-            </motion.div>
-            <span>by Akkal Dhami</span>
+            <Axe className="text-accent-foreground h-3 w-3" />
+            <span>by</span>
+            <Link
+              href={"https://akkal.com.np"}
+              target="_blank"
+              className="text-accent-foreground hover:underline">
+              Akkal Dhami
+            </Link>
           </div>
+          <Link
+            href={"https://github.com/akkaldhami/minimal-portfolio-template"}
+            target="_blank"
+            className="text-accent-foreground text-sm hover:underline">
+            Source code
+          </Link>
         </div>
       </div>
     </footer>

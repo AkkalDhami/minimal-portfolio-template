@@ -3,11 +3,11 @@ import Link from "next/link";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { motion } from "motion/react";
 import { Mail } from "lucide-react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 function SocialLinks({
   isLarge = true,
-  onlyIcons = false,
+  onlyIcons = false
 }: {
   isLarge?: boolean;
   onlyIcons?: boolean;
@@ -17,20 +17,20 @@ function SocialLinks({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.9 }}
-      className="flex gap-4 w-full justify-center lg:justify-start">
+      className="flex w-full justify-center gap-4 lg:justify-start">
       {[
         {
           icon: FiGithub,
           href: "https://github.com/akkaldhami",
-          label: "GitHub",
+          label: "GitHub"
         },
         { icon: FiLinkedin, href: "#", label: "LinkedIn" },
         {
           icon: Mail,
           href: "mailto:dhamiakkal21@gmail.com",
-          label: "Email",
-        },
-      ].map((social) => (
+          label: "Email"
+        }
+      ].map(social => (
         <motion.div
           key={social.label}
           whileHover={{ scale: 1.1, y: -2 }}
@@ -40,8 +40,8 @@ function SocialLinks({
             variant="outline"
             size="icon"
             className={cn(
-              "rounded-sm hover:shadow-primary w-auto cursor-pointer px-2 py-1 h-7 backdrop-blur-sm border bg-linear-l",
-              isLarge && "px-3 py-2 h-9"
+              "hover:shadow-primary bg-linear-l h-7 w-auto cursor-pointer rounded-sm border px-2 py-1 backdrop-blur-sm",
+              isLarge && "h-9 px-3 py-2"
             )}>
             <Link href={social.href} target="_blank">
               <social.icon className={isLarge ? "size-4" : "size-3"} />

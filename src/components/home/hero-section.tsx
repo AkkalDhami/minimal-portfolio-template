@@ -4,14 +4,14 @@ import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-import { FlipWords } from "../ui/flip-words";
-import { BorderBeam } from "../ui/border-beam";
+import { FlipWords } from "@/components/ui/flip-words";
+import { BorderBeam } from "@/components/ui/border-beam";
 
 import SocialLinks from "./socials";
 import ContactDialog from "./contact-dialog";
 import Link from "next/link";
 
-export default function CoolHeroSection() {
+export default function HeroSection() {
   const words = [
     "Backend Developer with Node & Express",
     "Frontend Developer with React & TypeScript",
@@ -45,14 +45,14 @@ export default function CoolHeroSection() {
   return (
     <section
       id="about"
-      className="min-h-[90vh] h-full relative flex items-center justify-center overflow-hidden bg-background px-4 mb-8">
-      <div className="container mx-auto relative z-10">
-        <div className="items-center mt-4 sm:mt-0">
+      className="bg-background relative mb-8 flex h-full min-h-[90vh] items-center justify-center overflow-hidden px-4">
+      <div className="relative z-10 container mx-auto">
+        <div className="mt-4 items-center sm:mt-0">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-3xl sm:text-5xl font-bold mb-5">
+            className="mb-5 text-3xl font-medium sm:text-5xl">
             Akkal Dhami
           </motion.h1>
 
@@ -60,12 +60,12 @@ export default function CoolHeroSection() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col text-center mt-3 lg:text-left">
+            className="mt-3 flex flex-col text-center lg:text-left">
             <motion.h3
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-lg md:text-xl text-muted-primary font-medium mb-6">
+              className="text-muted-primary mb-6 text-lg font-medium md:text-xl">
               <FlipWords words={words} />
             </motion.h3>
 
@@ -73,7 +73,7 @@ export default function CoolHeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-xl text-muted-foreground mb-8 max-w-xl leading-relaxed w-full">
+              className="text-muted-foreground mb-8 w-full max-w-xl text-xl leading-relaxed">
               I create modern, responsive web applications with
               {techStack.map((tech, i) =>
                 i === techStack.length - 1 ? (
@@ -94,19 +94,19 @@ export default function CoolHeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
-              className="flex gap-4 flex-wrap justify-center lg:justify-start items-center mb-12">
+              className="mb-12 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
               <Button
                 size="lg"
                 variant={"outline"}
                 asChild
-                className="group hover:shadow-primary border border-zinc-500/10  cursor-pointer relative bg-linear-t">
+                className="group hover:shadow-primary bg-linear-t relative cursor-pointer border border-zinc-500/10">
                 <Link href={"#projects"}>
                   View My Work
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   <BorderBeam
                     size={40}
                     initialOffset={20}
-                    className="from-transparent via-zinc-900 dark:via-zinc-50 to-transparent"
+                    className="from-transparent via-zinc-900 to-transparent dark:via-zinc-50"
                     transition={{
                       type: "spring",
                       stiffness: 60,

@@ -7,11 +7,11 @@ import {
   Briefcase,
   GraduationCap,
   Award,
-  Sparkles,
+  Sparkles
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { HeaderBadge } from "../ui/header-badge";
+import { HeaderBadge } from "@/components/ui/header-badge";
 import TechBadge from "./tech-badge";
 import { HiArrowLongRight } from "react-icons/hi2";
 import {
@@ -21,7 +21,7 @@ import {
   FaJava,
   FaJs,
   FaNodeJs,
-  FaReact,
+  FaReact
 } from "react-icons/fa6";
 import {
   SiGooglecloud,
@@ -31,7 +31,7 @@ import {
   SiReact,
   SiTailwindcss,
   SiTensorflow,
-  SiTypescript,
+  SiTypescript
 } from "react-icons/si";
 import { GrGraphQl } from "react-icons/gr";
 import { RiNextjsLine } from "react-icons/ri";
@@ -39,15 +39,15 @@ import { FaPython } from "react-icons/fa";
 
 const fadeInUp = {
   initial: { y: 40, opacity: 0 },
-  animate: { y: 0, opacity: 1 },
+  animate: { y: 0, opacity: 1 }
 };
 
 const stagger = {
   animate: {
     transition: {
-      staggerChildren: 0.2,
-    },
-  },
+      staggerChildren: 0.2
+    }
+  }
 };
 
 const experiences = [
@@ -63,7 +63,7 @@ const experiences = [
     achievements: [
       "Led migration from Angular to React, improving performance by 40%",
       "Implemented design system used by 50+ developers",
-      "Reduced bundle size by 60% through code splitting",
+      "Reduced bundle size by 60% through code splitting"
     ],
     technologies: [
       { name: "React", icon: FaReact },
@@ -73,9 +73,9 @@ const experiences = [
       { name: "CSS3", icon: FaCss3Alt },
       { name: "TailwindCSS", icon: SiTailwindcss },
       { name: "AWS", icon: FaAws },
-      { name: "GraphQL", icon: GrGraphQl },
+      { name: "GraphQL", icon: GrGraphQl }
     ],
-    icon: Briefcase,
+    icon: Briefcase
   },
   {
     id: 2,
@@ -89,7 +89,7 @@ const experiences = [
     achievements: [
       "Built scalable microservices architecture",
       "Improved application performance by 30%",
-      "Implemented CI/CD pipeline reducing deployment time by 70%",
+      "Implemented CI/CD pipeline reducing deployment time by 70%"
     ],
     technologies: [
       { name: "Next.js", icon: RiNextjsLine },
@@ -99,9 +99,9 @@ const experiences = [
       { name: "Docker", icon: FaDocker },
       { name: "Kubernetes", icon: SiKubernetes },
       { name: "AWS", icon: FaAws },
-      { name: "GraphQL", icon: GrGraphQl },
+      { name: "GraphQL", icon: GrGraphQl }
     ],
-    icon: Briefcase,
+    icon: Briefcase
   },
   {
     id: 3,
@@ -115,7 +115,7 @@ const experiences = [
     achievements: [
       "Graduated Summa Cum Laude",
       "Published research on AI accessibility",
-      "Teaching Assistant for Advanced Web Development",
+      "Teaching Assistant for Advanced Web Development"
     ],
     technologies: [
       { name: "Python", icon: FaPython },
@@ -123,9 +123,9 @@ const experiences = [
       { name: "Node.js", icon: FaNodeJs },
       { name: "MongoDB", icon: SiMongodb },
       { name: "AWS", icon: FaAws },
-      { name: "GraphQL", icon: GrGraphQl },
+      { name: "GraphQL", icon: GrGraphQl }
     ],
-    icon: GraduationCap,
+    icon: GraduationCap
   },
   {
     id: 4,
@@ -139,7 +139,7 @@ const experiences = [
     achievements: [
       "Implemented real-time traffic visualization",
       "Optimized map rendering performance",
-      "Collaborated with senior engineers on production code",
+      "Collaborated with senior engineers on production code"
     ],
     technologies: [
       { name: "Java", icon: FaJava },
@@ -147,9 +147,9 @@ const experiences = [
       { name: "Kubernetes", icon: SiKubernetes },
       { name: "GraphQL", icon: GrGraphQl },
       { name: "AWS", icon: FaAws },
-      { name: "Docker", icon: FaDocker },
+      { name: "Docker", icon: FaDocker }
     ],
-    icon: Briefcase,
+    icon: Briefcase
   },
   {
     id: 5,
@@ -163,7 +163,7 @@ const experiences = [
     achievements: [
       "Graduated Magna Cum Laude",
       "Best Capstone Project Award",
-      "Led team to win hackathon",
+      "Led team to win hackathon"
     ],
     technologies: [
       { name: "React.js", icon: SiReact },
@@ -173,15 +173,15 @@ const experiences = [
       { name: "AWS", icon: FaAws },
       { name: "GraphQL", icon: GrGraphQl },
       { name: "Kubernetes", icon: SiKubernetes },
-      { name: "Docker", icon: FaDocker },
+      { name: "Docker", icon: FaDocker }
     ],
-    icon: GraduationCap,
-  },
+    icon: GraduationCap
+  }
 ];
 
 export default function WorkEduSection() {
   return (
-    <section id="education" className="bg-background px-4 py-16 mb-12">
+    <section id="education" className="bg-background mb-12 px-4 py-16">
       <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
         <motion.div
@@ -189,15 +189,15 @@ export default function WorkEduSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16">
+          className="mb-16 text-center">
           <HeaderBadge
             icon={<Sparkles className="size-4" />}
             text="Career Journey"
           />
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="mb-4 text-3xl font-medium md:text-4xl">
             Work & Education
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
             A timeline of my professional journey, highlighting my work
             experience and educational achievements.
           </p>
@@ -207,9 +207,9 @@ export default function WorkEduSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4"></h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto"></p>
+          className="mb-16 text-center">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl"></h2>
+          <p className="text-muted-foreground mx-auto max-w-2xl text-lg"></p>
         </motion.div>
 
         {/* Timeline */}
@@ -219,38 +219,38 @@ export default function WorkEduSection() {
           whileInView="animate"
           viewport={{ once: true }}
           className="relative">
-          <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-zinc-500/30 transform -translate-x-1/2" />
+          <div className="absolute top-0 bottom-0 left-4 w-0.5 -translate-x-1/2 transform bg-zinc-500/30" />
 
           {/* Experience Items */}
-          <div className="space-y-12 w-full">
-            {experiences.map((experience) => (
+          <div className="w-full space-y-12">
+            {experiences.map(experience => (
               <motion.div
                 key={experience.id}
                 variants={fadeInUp}
-                className={`relative w-full flex items-center`}>
+                className={`relative flex w-full items-center`}>
                 {/* Timeline Dot */}
-                <div className="absolute left-4  transform -translate-x-1/2 z-10">
+                <div className="absolute left-4 z-10 -translate-x-1/2 transform">
                   <div
-                    className={`w-4 h-4 rounded-full bg-accent border-2 border-neutral-500/30 shadow-lg`}
+                    className={`bg-accent h-4 w-4 rounded-full border-2 border-neutral-500/30 shadow-lg`}
                   />
                 </div>
-                <HiArrowLongRight className="absolute left-9 text-neutral-500/90 text-3xl transform -translate-x-1/2 z-10" />
+                <HiArrowLongRight className="absolute left-9 z-10 -translate-x-1/2 transform text-3xl text-neutral-500/90" />
 
                 <div className={`ml-12 w-full`}>
-                  <Card className="bg-transparent dark:bg-transparent border  transition-all duration-300 hover:border-neutral-300 dark:hover:border-neutral-600">
+                  <Card className="border bg-transparent transition-all duration-300 hover:border-neutral-300 dark:bg-transparent dark:hover:border-neutral-600">
                     <CardContent className="p-6">
-                      <div className="flex items-start gap-4 mb-4">
+                      <div className="mb-4 flex items-start gap-4">
                         <div
-                          className={`p-3 rounded-md border border-neutral-500/40 dark:border-neutral-600 bg-transparent dark:bg-transparent`}>
-                          <experience.icon className="h-5 w-5 " />
+                          className={`rounded-md border border-neutral-500/40 bg-transparent p-3 dark:border-neutral-600 dark:bg-transparent`}>
+                          <experience.icon className="h-5 w-5" />
                         </div>
                         <div className="flex-1">
-                          <div className="flex items-start justify-between mb-2">
+                          <div className="mb-2 flex items-start justify-between">
                             <div>
                               <h3 className="text-lg font-medium">
                                 {experience.title}
                               </h3>
-                              <p className="text-sm text-muted-foreground">
+                              <p className="text-muted-foreground text-sm">
                                 {experience.company}
                               </p>
                             </div>
@@ -261,7 +261,7 @@ export default function WorkEduSection() {
                             </Badge>
                           </div>
 
-                          <div className="flex flex-wrap gap-4 text-base text-muted-foreground">
+                          <div className="text-muted-foreground flex flex-wrap gap-4 text-base">
                             <div className="flex items-center gap-1">
                               <Calendar className="h-3 w-3" />
                               {experience.duration}
@@ -274,20 +274,20 @@ export default function WorkEduSection() {
                         </div>
                       </div>
 
-                      <p className="text-base text-muted-foreground mb-4 leading-relaxed">
+                      <p className="text-muted-foreground mb-4 text-base leading-relaxed">
                         {experience.description}
                       </p>
 
                       <div className="mb-4">
-                        <h4 className="text-base font-medium mb-2 uppercase tracking-wide">
+                        <h4 className="mb-2 text-base font-medium tracking-wide uppercase">
                           Key Achievements
                         </h4>
                         <ul className="space-y-1">
                           {experience.achievements.map((achievement, idx) => (
                             <li
                               key={idx}
-                              className="flex items-start gap-2 text-base text-muted-foreground">
-                              <Award className="size-4 mt-1 shrink-0" />
+                              className="text-muted-foreground flex items-start gap-2 text-base">
+                              <Award className="mt-1 size-4 shrink-0" />
                               {achievement}
                             </li>
                           ))}
@@ -295,7 +295,7 @@ export default function WorkEduSection() {
                       </div>
 
                       <div>
-                        <h4 className="text-base font-medium mb-2 uppercase tracking-wide">
+                        <h4 className="mb-2 text-base font-medium tracking-wide uppercase">
                           Technologies
                         </h4>
                         <div className="flex flex-wrap gap-1">
@@ -318,17 +318,17 @@ export default function WorkEduSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-center mt-16">
-          <div className="inline-flex flex-col sm:flex-row gap-4 items-center  rounded-2xl p-6 shadow-lg border">
+          className="mt-16 text-center">
+          <div className="inline-flex flex-col items-center gap-4 rounded-2xl border p-6 shadow-lg sm:flex-row">
             <div className="text-left">
-              <h3 className="font-bold text-slate-900 dark:text-white mb-1">
+              <h3 className="mb-1 font-bold text-slate-900 dark:text-white">
                 Download Resume
               </h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-muted-foreground text-sm">
                 Get a comprehensive overview of my experience and skills
               </p>
             </div>
-            <button className="px-6 py-2 cursor-pointer bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg font-medium hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors">
+            <button className="cursor-pointer rounded-lg bg-slate-900 px-6 py-2 font-medium text-white transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100">
               Download PDF
             </button>
           </div>

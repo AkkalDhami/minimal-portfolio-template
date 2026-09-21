@@ -3,7 +3,7 @@
 import { Mail, Package, User, Moon, Sun, BriefcaseIcon } from "lucide-react";
 import { FaRegComments } from "react-icons/fa";
 import { VscTools } from "react-icons/vsc";
-import { MenuDock, MenuDockItem } from "../ui/dock";
+import { MenuDock, MenuDockItem } from "@/components/ui/dock";
 import { useTheme } from "next-themes";
 import { useEffect, useState, useMemo } from "react";
 
@@ -72,7 +72,6 @@ export function Navbar() {
     ];
   }, [currentTheme, setTheme]);
 
-  // ✅ Alternative: Scroll-based section detection
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);

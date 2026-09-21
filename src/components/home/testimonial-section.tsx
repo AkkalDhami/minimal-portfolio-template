@@ -1,6 +1,6 @@
 "use client";
 import { QuoteIcon } from "lucide-react";
-import { HeaderBadge } from "../ui/header-badge";
+import { HeaderBadge } from "@/components/ui/header-badge";
 import { motion } from "motion/react";
 import {
   Testimonial,
@@ -18,7 +18,7 @@ import {
   MarqueeContent,
   MarqueeFade,
   MarqueeItem
-} from "../ui/marquee";
+} from "@/components/ui/marquee";
 import Link from "next/link";
 
 interface Testimonial {
@@ -29,7 +29,7 @@ interface Testimonial {
   quote: string;
 }
 
-//? source: https://chanhdai.com/components/testimonials-marquee
+//? Thanks: https://chanhdai.com/components/testimonials-marquee
 
 export const testimonials: Testimonial[] = [
   {
@@ -142,7 +142,7 @@ export const testimonials2: Testimonial[] = [
   }
 ];
 
-export function TestimonialSection() {
+export default function TestimonialSection() {
   return (
     <section id="testimonials" className="bg-background mb-12 px-4 py-16">
       <div className="container mx-auto max-w-6xl">
@@ -156,7 +156,7 @@ export function TestimonialSection() {
             icon={<QuoteIcon className="size-4" />}
             text="Client Testimonials"
           />
-          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+          <h2 className="mb-4 text-3xl font-medium md:text-4xl">
             What Clients Say
           </h2>
           <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
@@ -176,27 +176,33 @@ export function TestimonialSection() {
                   <MarqueeItem
                     key={item.url}
                     className="border-edge mx-0 h-full w-xs border-r">
-                    <Testimonial>
-                      <TestimonialQuote>
-                        <p>{item.quote}</p>
-                      </TestimonialQuote>
+                    <Link
+                      href={
+                        "https://chanhdai.com/components/testimonials-marquee"
+                      }
+                      target="_blank">
+                      <Testimonial>
+                        <TestimonialQuote>
+                          <p>{item.quote}</p>
+                        </TestimonialQuote>
 
-                      <TestimonialAuthor>
-                        <TestimonialAvatar>
-                          <TestimonialAvatarImg src={item.authorAvatar} />
-                          <TestimonialAvatarRing />
-                        </TestimonialAvatar>
+                        <TestimonialAuthor>
+                          <TestimonialAvatar>
+                            <TestimonialAvatarImg src={item.authorAvatar} />
+                            <TestimonialAvatarRing />
+                          </TestimonialAvatar>
 
-                        <TestimonialAuthorName>
-                          {item.authorName}
-                          <TestimonialVerifiedBadge className="text-blue-500" />
-                        </TestimonialAuthorName>
+                          <TestimonialAuthorName>
+                            {item.authorName}
+                            <TestimonialVerifiedBadge className="text-blue-500" />
+                          </TestimonialAuthorName>
 
-                        <TestimonialAuthorTagline>
-                          {item.authorTagline}
-                        </TestimonialAuthorTagline>
-                      </TestimonialAuthor>
-                    </Testimonial>
+                          <TestimonialAuthorTagline>
+                            {item.authorTagline}
+                          </TestimonialAuthorTagline>
+                        </TestimonialAuthor>
+                      </Testimonial>
+                    </Link>
                   </MarqueeItem>
                 ))}
               </MarqueeContent>
