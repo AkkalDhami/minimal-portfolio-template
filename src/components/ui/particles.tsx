@@ -15,7 +15,7 @@ export function Particles({
   particleCount = 10000,
   particleSize = 35,
   animate = true,
-  className = "",
+  className = ""
 }: ParticlesProps) {
   const mountRef = useRef<HTMLDivElement>(null);
 
@@ -64,7 +64,7 @@ export function Particles({
         sizeAttenuation: true,
         map: sprite,
         alphaTest: 0.5,
-        transparent: true,
+        transparent: true
       });
       material.color.setStyle(color);
 
@@ -73,7 +73,7 @@ export function Particles({
 
       const renderer = new THREE.WebGLRenderer({
         antialias: true,
-        alpha: true,
+        alpha: true
       });
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(window.innerWidth, window.innerHeight);
@@ -135,7 +135,7 @@ export function Particles({
   return (
     <div
       ref={mountRef}
-      className={`absolute top-0 left-0 w-full h-full pointer-events-none ${className}`}
+      className={`pointer-events-none absolute top-0 left-0 h-full w-full ${className}`}
     />
   );
 }

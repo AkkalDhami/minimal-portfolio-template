@@ -158,7 +158,7 @@ export const MenuDock: React.FC<MenuDockProps> = ({
                 className={cn(
                   "hidden font-medium capitalize transition-colors duration-200 sm:block",
                   styles.text,
-                  isActive ? "text-primary font-semibold" : ""
+                  isActive ? "text-primary" : ""
                 )}>
                 {item.label}
               </span>
